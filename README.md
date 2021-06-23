@@ -23,12 +23,12 @@
 | Column             | Type       | Option                          |
 | ------------------ | ---------- | ------------------------------- |
 | name               | string     | null: false                     |
-| price              | string     | null: false                     |
+| price              | integer    | null: false                     |
 | detail             | text       | null: false                     |
 | category_id        | integer    | null: false                     |
 | status_id          | integer    | null: false                     |
 | delivery_charge_id | integer    | null: false                     |
-| shipment_source_id | integer    | null: false                     |
+| prefecture_id      | integer    | null: false                     |
 | shipping_date_id   | integer    | null: false                     |
 | user               | references | null: false, foreign_key: true  |
 
@@ -39,7 +39,7 @@
 
 ### purchase テーブル
 
-| Column | Type       | Option   --------              |
+| Column | Type       | Option                         |
 | ------ | ---------- | ------------------------------ |
 | user   | references | null: false, foreign_key: true |
 | item   | references | null: false, foreign_key: true |
