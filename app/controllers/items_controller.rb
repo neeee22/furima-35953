@@ -26,7 +26,7 @@ class ItemsController < ApplicationController
                                  :category_id,
                                  :status_id,
                                  :delivery_charge_id,
-                                 :prefectue_id,
+                                 :prefecture_id,
                                  :shipping_date_id,
                                  :image ).merge(user_id: current_user.id)
   end

@@ -10,7 +10,7 @@ class Item < ApplicationRecord
     validates :category_id
     validates :status_id
     validates :delivery_charge_id
-    validates :prefectue_id
+    validates :prefecture_id
     validates :shipping_date_id
   end
 
