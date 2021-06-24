@@ -9,6 +9,12 @@ RSpec.describe User, type: :model do
     it '全ての値が正しく入力されていれば保存できる' do
       expect(@user).to be_valid
     end
+    it 'パスワードは、6文字以上であれば登録できる' do
+      @user.password = 'a11111'
+      @user.password_confirmation = @user.password
+      expect(@user).to be_valid
+    end
+    
     it 'ニックネームが必須であること' do
       @user.nickname = ''
       @user.valid?
@@ -35,11 +41,6 @@ RSpec.describe User, type: :model do
       @user.password = ''
       @user.valid?
       expect(@user.errors.full_messages).to include("Password can't be blank")
-    end
-    it 'パスワードは、6文字以上であれば登録できる' do
-      @user.password = 'a11111'
-      @user.password_confirmation = @user.password
-      expect(@user).to be_valid
     end
     it 'パスワードは、5文字以下では登録できない' do
       @user.password = Faker::Internet.password(min_length: 1,max_length: 5)
