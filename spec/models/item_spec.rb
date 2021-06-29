@@ -57,7 +57,7 @@ RSpec.describe Item, type: :model do
         expect(@item.errors.full_messages).to include("Price must be less than or equal to 9999999")
       end
       it 'カテゴリーが選択されていない' do
-        @item.category_id = '1'
+        @item.category_id = 1
         @item.valid?
         expect(@item.errors.full_messages).to include("Category must be other than 1")
       end
