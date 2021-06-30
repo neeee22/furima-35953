@@ -16,6 +16,11 @@ class ItemsController < ApplicationController
       render :new
     end
   end
+  def destroy
+    item = Item.find(params[:id])
+    item.destroy
+    redirect_to root_path
+  end
   private 
   def item_params
     params.require(:item).permit(:name,
