@@ -1,6 +1,6 @@
 class ItemsController < ApplicationController
-  before_action :authenticate_user!, only: [:new, :create]
-  before_action :set_item, only: [:show, :edit]
+  before_action :authenticate_user!, only: [:new, :create,:edit,:update]
+  before_action :set_item, only: [:show, :edit, :update]
 
   def index
     @items = Item.all.order("created_at DESC")
@@ -22,6 +22,17 @@ class ItemsController < ApplicationController
   def show
   end
   def edit
+    #商品購入機能実装時にコメントアウトを外す
+    if current_user != @item.user #|| @item.order.present?
+      redirect_to root_path
+    end
+  end
+  def update
+    if @item.update(item_params)
+      redirect_to item_path(@item.id)
+    else
+      render :edit
+    end
   end
   private 
   def item_params
