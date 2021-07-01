@@ -1,6 +1,7 @@
 class ItemsController < ApplicationController
-  before_action :authenticate_user!, only: %i[new create destroy]
+  before_action :authenticate_user!, only: %i[new create edit update destroy]
   before_action :set_item, only: %i[show edit update destroy]
+  before_action :edit_authority, only: %i[edit update]
 
   def index
     @items = Item.all.order('created_at DESC')
@@ -21,6 +22,16 @@ class ItemsController < ApplicationController
 
   def show; end
 
+  def edit; end
+
+  def update
+    if @item.update(item_params)
+      redirect_to item_path(@item.id)
+    else
+      render :edit
+    end
+  end
+  
   def destroy
     if current_user == @item.user
       @item.destroy
@@ -46,5 +57,10 @@ class ItemsController < ApplicationController
 
   def set_item
     @item = Item.find(params[:id])
+  end
+
+  def edit_authority
+    # 商品購入機能実装時にコメントアウトを外す
+    redirect_to root_path if current_user != @item.user # || @item.order.present?
   end
 end
