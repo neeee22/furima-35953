@@ -1,7 +1,10 @@
 class ItemsController < ApplicationController
-  before_action :authenticate_user!, only: [:new, :create]
+  before_action :authenticate_user!, only: %i[new create edit update]
+  before_action :set_item, only: %i[show edit update]
+  before_action :edit_authority, only: %i[edit update]
+
   def index
-    @items = Item.all.order("created_at DESC")
+    @items = Item.all.order('created_at DESC')
   end
 
   def new
@@ -16,7 +19,21 @@ class ItemsController < ApplicationController
       render :new
     end
   end
-  private 
+
+  def show; end
+
+  def edit; end
+
+  def update
+    if @item.update(item_params)
+      redirect_to item_path(@item.id)
+    else
+      render :edit
+    end
+  end
+
+  private
+
   def item_params
     params.require(:item).permit(:name,
                                  :price,
@@ -26,6 +43,15 @@ class ItemsController < ApplicationController
                                  :fee_id,
                                  :prefecture_id,
                                  :schedule_id,
-                                 :image ).merge(user_id: current_user.id)
+                                 :image).merge(user_id: current_user.id)
+  end
+
+  def set_item
+    @item = Item.find(params[:id])
+  end
+
+  def edit_authority
+    # 商品購入機能実装時にコメントアウトを外す
+    redirect_to root_path if current_user != @item.user # || @item.order.present?
   end
 end
