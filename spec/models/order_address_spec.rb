@@ -42,6 +42,11 @@ RSpec.describe Order, type: :model do
       @order_address.valid?
       expect(@order_address.errors.full_messages).to include("Phone number can't be blank")
     end
+    it "電話番号は半角数字のみ登録できること" do
+      @order_address.phone_number = "090-0909-0909"
+      @order_address.valid?
+      expect(@order_address.errors.full_messages).to include("Phone number は、半角数字で入力してください")
+    end
     it "都道府県を選択しなければ登録できないこと" do
       @order_address.prefecture_id = "0"
       @order_address.valid?
