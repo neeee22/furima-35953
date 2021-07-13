@@ -17,7 +17,7 @@ class OrderAddress
     validates :phone_number
     validates :user_id
   end
-  validates :prefecture_id, numericality: { other_than: 1 }
+  validates :prefecture_id, numericality: { other_than: 0 }
 
   def save
     order = Order.create()
