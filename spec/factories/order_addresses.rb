@@ -7,6 +7,5 @@ FactoryBot.define do
     house_number { "新宿1-1-1" }
     building_name { "新宿ビル" }
     phone_number { "00000000000" }
-    user_id { 11 }
   end
 end
