@@ -60,7 +60,6 @@ class ItemsController < ApplicationController
   end
 
   def edit_authority
-    # 商品購入機能実装時にコメントアウトを外す
-    redirect_to root_path if current_user != @item.user # || @item.order.present?
+    redirect_to root_path if current_user != @item.user || @item.order.present?
   end
 end
