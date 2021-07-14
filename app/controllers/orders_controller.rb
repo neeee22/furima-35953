@@ -1,7 +1,7 @@
 class OrdersController < ApplicationController
   before_action :authenticate_user!
-  before_action :move_to_index
   before_action :set_item
+  before_action :move_to_index
 
   def index
     @order_address = OrderAddress.new
@@ -17,7 +17,7 @@ class OrdersController < ApplicationController
       render :index
     end
   end
-  
+
   private
 
   def set_item
