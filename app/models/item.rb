@@ -2,7 +2,7 @@ class Item < ApplicationRecord
   with_options presence: true do
     validates :name
     validates :detail
-    validates :image
+    validates :images
   end
 
   validates :price, presence: true,
@@ -18,7 +18,7 @@ class Item < ApplicationRecord
 
   belongs_to :user
   has_one :order
-  has_one_attached :image
+  has_many_attached :images
 
   extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to :category
