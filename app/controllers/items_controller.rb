@@ -52,7 +52,7 @@ class ItemsController < ApplicationController
                                  :fee_id,
                                  :prefecture_id,
                                  :schedule_id,
-                                 :image).merge(user_id: current_user.id)
+                                 images: []).merge(user_id: current_user.id)
   end
 
   def set_item
