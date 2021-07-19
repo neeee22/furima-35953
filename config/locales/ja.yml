@@ -4,10 +4,10 @@ ja:
       user:
         nickname: ニックネーム
         birthday: 生年月日
-        first_name: 姓
-        last_name: 名
-        first_name_kana: 姓(カナ)
-        last_name_kana: 名(カナ)
+        first_name: 名
+        last_name: 姓
+        first_name_kana: 名(カナ)
+        last_name_kana: 姓(カナ)
       item:
         name: 商品名
         detail: 商品の説明
