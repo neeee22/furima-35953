@@ -11,7 +11,7 @@ FactoryBot.define do
     prefecture_id { Faker::Number.between(from: 1, to: 47) }
     schedule_id { Faker::Number.between(from: 1, to: 3) }
     after(:build) do |item|
-      item.image.attach(io: File.open('public/images/item-sample.png'), filename: 'item-sample.png')
+      item.images.attach(io: File.open('public/images/item-sample.png'), filename: 'item-sample.png')
     end
   end
 end

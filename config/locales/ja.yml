@@ -14,7 +14,7 @@ ja:
         images: 商品画像
         price: 販売価格
         category_id: カテゴリー
-        status_id: 商品の詳細
+        status_id: 商品の状態
         fee_id: 配送料の負担
         prefecture_id: 発送元の地域
         schedule_id: 発送までの日数
