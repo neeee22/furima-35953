@@ -14,22 +14,22 @@ RSpec.describe Item, type: :model do
       it '商品名が入力されていない' do
         @item.name = ''
         @item.valid?
-        expect(@item.errors.full_messages).to include("商品名を入力してください")
+        expect(@item.errors.full_messages).to include('商品名を入力してください')
       end
       it '商品の説明が入力されていない' do
         @item.detail = ''
         @item.valid?
-        expect(@item.errors.full_messages).to include("商品の説明を入力してください")
+        expect(@item.errors.full_messages).to include('商品の説明を入力してください')
       end
       it '画像が添付されていない' do
         @item.images = nil
         @item.valid?
-        expect(@item.errors.full_messages).to include("商品画像を入力してください")
+        expect(@item.errors.full_messages).to include('商品画像を入力してください')
       end
       it '価格が入力されていない' do
         @item.price = ''
         @item.valid?
-        expect(@item.errors.full_messages).to include("販売価格を入力してください")
+        expect(@item.errors.full_messages).to include('販売価格を入力してください')
       end
       it '価格が半角英字であると登録できない' do
         @item.price = 'a'
