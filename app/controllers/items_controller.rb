@@ -31,7 +31,7 @@ class ItemsController < ApplicationController
       render :edit
     end
   end
-  
+
   def destroy
     if current_user == @item.user
       @item.destroy

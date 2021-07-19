@@ -37,10 +37,10 @@ group :development, :test do
   gem 'rspec-rails', '~> 4.0.0'
 
   gem 'capistrano'
-  gem 'capistrano-rbenv'
+  gem 'capistrano3-unicorn'
   gem 'capistrano-bundler'
   gem 'capistrano-rails'
-  gem 'capistrano3-unicorn'
+  gem 'capistrano-rbenv'
 end
 
 group :development do
@@ -68,10 +68,11 @@ end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'active_hash'
+gem 'aws-sdk-s3', require: false
 gem 'devise'
 gem 'image_processing', '~> 1.2'
 gem 'mini_magick'
-gem 'pry-rails'
-gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
 gem 'payjp'
-gem "aws-sdk-s3", require: false
+gem 'pry-rails'
+gem 'rails-i18n'
+gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
