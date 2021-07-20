@@ -18,10 +18,14 @@
       </div>
       <%= @user.email %>
     </div>
-    <div class="form-group">
-      <p class='form-info-header'>
+    <div class='register-btn'>
+      <br>
+      <%= link_to "登録情報変更",edit_user_registration_path(current_user) %>
+    </div>
+    <div class='form-header'>
+      <h1 class='form-header-text'>
         本人情報
-      </p>
+      </h1>
     </div>
     <div class="form-group">
       <div class='form-text-wrap'>
@@ -45,9 +49,32 @@
         <%= @user.birthday %>
       </div>
     </div>
+    
+    <div class='form-header'>
+      <h1 class='form-header-text'>
+        カード情報
+      </h1>
+    </div>
+    <div class="form-group">
+      <div class='form-text-wrap'>
+          <label class="form-text">カード番号</label>
+      </div>
+      <%= "**** **** **** " + @card[:last4] %>
+    </div>
+    <div class="form-group">
+      <div class='form-text-wrap'>
+          <label class="form-text">有効期限</label>
+      </div>
+      <%= @card[:exp_month] %>
+      /
+      <%= @card[:exp_year] %>
+    </div>
+    <div class="form-group">
+    <%= link_to "カード情報変更", root_path%>
+    </div>
+
     <div class='register-btn'>
-      <%= link_to "登録情報変更",edit_user_registration_path(current_user) %>
-      <br>
+    <br>
       <%= link_to "ログアウト", destroy_user_session_path, method: :delete%>
       <br>
       <%= link_to "商品一覧へ戻る", root_path%>

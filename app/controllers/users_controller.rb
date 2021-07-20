@@ -1,13 +1,15 @@
 class UsersController < ApplicationController
   def show
     @user = current_user
+    Payjp.api_key = ENV["PAYJP_SECRET_KEY"] 
+    card = Card.find_by(user_id: current_user.id) 
+
+    customer = Payjp::Customer.retrieve(card.customer_token) 
+    @card = customer.cards.first
   end
 
   private
 
-  def user_params
-    params.require(:user).permit(:nickname, :email) # 編集出来る情報を制限
-  end
 
 end
 
