@@ -13,9 +13,9 @@ class CardsController < ApplicationController
       user_id: current_user.id
     )
     if card.save
-      redirect_to root_path
+      redirect_to user_path(current_user)
     else
-      redirect_to action: "new"
+      render :new
     end
   end
 

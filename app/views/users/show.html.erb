@@ -59,7 +59,7 @@
       <div class='form-text-wrap'>
           <label class="form-text">カード番号</label>
       </div>
-      <%= "**** **** **** " + @card[:last4] %>
+      <%= "**** **** **** " + @card[:last4].to_s %>
     </div>
     <div class="form-group">
       <div class='form-text-wrap'>
@@ -71,6 +71,15 @@
     </div>
     <div class="form-group">
     <%= link_to "カード削除", card_path(current_user.id),method: :delete %>
+    </div>
+    <% else %>
+    <div class='form-header'>
+      <h1 class='form-header-text'>
+        クレジットカード情報を登録
+      </h1>
+    </div>
+    <div class="form-group">
+    <%= link_to "カード登録", new_card_path %>
     </div>
     <% end %>
     <div class='register-btn'>
