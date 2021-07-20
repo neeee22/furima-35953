@@ -1,0 +1,53 @@
+<%= render "shared/second-header"%>
+<div class='registration-main'>
+  <div class='form-wrap'>
+    <div class='form-header'>
+      <h1 class='form-header-text'>
+        会員情報入力
+      </h1>
+    </div>
+    <div class="form-group">
+      <div class='form-text-wrap'>
+        <label class="form-text">ニックネーム</label>
+      </div>
+      <%= @user.nickname %>
+    </div>
+    <div class="form-group">
+      <div class='form-text-wrap'>
+        <label class="form-text">メールアドレス</label>
+      </div>
+      <%= @user.email %>
+    </div>
+    <div class="form-group">
+      <p class='form-info-header'>
+        本人情報
+      </p>
+    </div>
+    <div class="form-group">
+      <div class='form-text-wrap'>
+        <label class="form-text">お名前(全角)</label>
+      </div>
+        <%= @user.last_name %>
+        <%= @user.first_name %>
+    </div>
+    <div class="form-group">
+      <div class='form-text-wrap'>
+        <label class="form-text">お名前カナ(全角)</label>
+      </div>
+        <%= @user.last_name_kana %>
+        <%= @user.first_name_kana %>
+    </div>
+    <div class="form-group">
+      <div class='form-text-wrap'>
+        <label class="form-text">生年月日</label>
+      </div>
+      <div class='input-birth-wrap'>
+        <%= @user.birthday %>
+      </div>
+    </div>
+    <div class='register-btn'>
+      <%= link_to "登録情報変更",edit_user_registration_path(current_user) %>
+    </div>
+  </div>
+</div>
+<%= render "shared/second-footer"%>
