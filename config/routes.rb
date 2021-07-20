@@ -4,5 +4,6 @@ Rails.application.routes.draw do
   resources :items do
     resources :orders, only: %i[index create]
   end
-  resources :users,only:[:show,:edit,:update]
+  resources :users,only:[:show]
+  resourses :card,only:[:new,:create]
 end

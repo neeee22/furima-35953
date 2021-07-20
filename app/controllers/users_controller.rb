@@ -3,17 +3,6 @@ class UsersController < ApplicationController
     @user = current_user
   end
 
-  def edit
-  end
-  
-  def update
-    if current_user.update(user_params) # 更新出来たかを条件分岐する
-      redirect_to root_path # 更新できたらrootパスへ
-    else
-      redirect_to action: "show" # 失敗すれば再度マイページへ
-    end
-  end
-
   private
 
   def user_params

@@ -3,7 +3,7 @@
   <div class='form-wrap'>
     <div class='form-header'>
       <h1 class='form-header-text'>
-        会員情報入力
+        会員情報
       </h1>
     </div>
     <div class="form-group">
@@ -47,6 +47,10 @@
     </div>
     <div class='register-btn'>
       <%= link_to "登録情報変更",edit_user_registration_path(current_user) %>
+      <br>
+      <%= link_to "ログアウト", destroy_user_session_path, method: :delete%>
+      <br>
+      <%= link_to "商品一覧へ戻る", root_path%>
     </div>
   </div>
 </div>
