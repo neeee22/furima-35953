@@ -18,4 +18,17 @@ class CardsController < ApplicationController
       redirect_to action: "new"
     end
   end
+
+  def destroy
+    card = Card.where(user_id: current_user.id).first
+    if card.blank?
+    else
+      Payjp.api_key = ENV["PAYJP_SECRET_KEY"]
+      customer = Payjp::Customer.retrieve(card.customer_token)
+      customer.delete
+      card.delete
+    end
+      redirect_to user_path(current_user)
+  end
+  
 end
