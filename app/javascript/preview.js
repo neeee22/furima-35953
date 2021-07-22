@@ -10,8 +10,8 @@ document.addEventListener('DOMContentLoaded', function(){
 
       // 表示する画像を生成
       const blobImage = document.createElement('img');
-      blobImage.width = 100;
-      blobImage.height = 100;
+      blobImage.width = 250;
+      blobImage.height = 250;
       blobImage.setAttribute('src', blob);
 
       // ファイル選択ボタンを生成

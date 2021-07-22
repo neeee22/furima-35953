@@ -227,3 +227,10 @@
 .inc {
   font-size: 13px;
 }
+
+.image-element{
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  padding-bottom: 2vh;
+}
