@@ -1,4 +1,6 @@
 class UsersController < ApplicationController
+  before_action :authenticate_user!, except: %i[show]
+  
   def show
     @user = current_user
     Payjp.api_key = ENV["PAYJP_SECRET_KEY"] 
@@ -9,6 +11,6 @@ class UsersController < ApplicationController
     end
   end
   private
-
+  
 end
 

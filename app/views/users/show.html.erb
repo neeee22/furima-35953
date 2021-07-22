@@ -1,92 +1,85 @@
 <%= render "shared/second-header"%>
-<div class='registration-main'>
-  <div class='form-wrap'>
-    <div class='form-header'>
-      <h1 class='form-header-text'>
+<div class='user-show-main'>
+  <div class='user-show-wrap'>
+    <div class='user-show-header'>
+      <h1 class='user-show-header-text'>
         会員情報
       </h1>
     </div>
-    <div class="form-group">
-      <div class='form-text-wrap'>
-        <label class="form-text">ニックネーム</label>
+    <div class="user-show-group">
+      <div class='user-show-text-wrap'>
+        <label class="user-show-text">ニックネーム</label>
       </div>
-      <%= @user.nickname %>
+      <p class="user-show-value"><%= @user.nickname %></p>
     </div>
-    <div class="form-group">
-      <div class='form-text-wrap'>
-        <label class="form-text">メールアドレス</label>
+    <div class="user-show-group">
+      <div class='user-show-text-wrap'>
+        <label class="user-show-text">メールアドレス</label>
       </div>
-      <%= @user.email %>
+      <p class="user-show-value"><%= @user.email %></p>
     </div>
-    <div class='register-btn'>
+    <div class='user-show-btn'>
       <br>
-      <%= link_to "登録情報変更",edit_user_registration_path(current_user) %>
-    </div>
-    <div class='form-header'>
-      <h1 class='form-header-text'>
-        本人情報
-      </h1>
-    </div>
-    <div class="form-group">
-      <div class='form-text-wrap'>
-        <label class="form-text">お名前(全角)</label>
-      </div>
-        <%= @user.last_name %>
-        <%= @user.first_name %>
-    </div>
-    <div class="form-group">
-      <div class='form-text-wrap'>
-        <label class="form-text">お名前カナ(全角)</label>
-      </div>
-        <%= @user.last_name_kana %>
-        <%= @user.first_name_kana %>
-    </div>
-    <div class="form-group">
-      <div class='form-text-wrap'>
-        <label class="form-text">生年月日</label>
-      </div>
-      <div class='input-birth-wrap'>
-        <%= @user.birthday %>
-      </div>
+      <%= link_to "登録情報変更",edit_user_registration_path(current_user) , class:"user-show-grey-btn"%>
     </div>
     <% if @card.present? %>
-    <div class='form-header'>
-      <h1 class='form-header-text'>
+    <div class='user-show-header'>
+      <h1 class='user-show-header-text'>
         カード情報
       </h1>
     </div>
-    <div class="form-group">
-      <div class='form-text-wrap'>
-          <label class="form-text">カード番号</label>
+    <div class="user-show-group">
+      <div class='user-show-text-wrap'>
+          <label class="user-show-text">カード番号</label>
       </div>
       <%= "**** **** **** " + @card[:last4].to_s %>
     </div>
-    <div class="form-group">
-      <div class='form-text-wrap'>
-          <label class="form-text">有効期限</label>
+    <div class="user-show-group">
+      <div class='user-show-text-wrap'>
+          <label class="user-show-text">有効期限</label>
       </div>
       <%= @card[:exp_month] %>
       /
       <%= @card[:exp_year] %>
     </div>
-    <div class="form-group">
-    <%= link_to "カード削除", card_path(current_user.id),method: :delete %>
+    <div class='user-show-btn'>
+      <%= link_to "カード削除", card_path(current_user.id),method: :delete, class:"user-show-grey-btn" %>
     </div>
     <% else %>
-    <div class='form-header'>
-      <h1 class='form-header-text'>
-        クレジットカード情報を登録
-      </h1>
-    </div>
-    <div class="form-group">
-    <%= link_to "カード登録", new_card_path %>
+    <div class='user-show-btn'>
+      <%= link_to "カード登録", new_card_path, class:"user-show-red-btn" %>
     </div>
     <% end %>
-    <div class='register-btn'>
-    <br>
-      <%= link_to "ログアウト", destroy_user_session_path, method: :delete%>
-      <br>
-      <%= link_to "商品一覧へ戻る", root_path%>
+    <div class='user-show-header'>
+      <h1 class='user-show-header-text'>
+        本人情報
+      </h1>
+    </div>
+    <div class="user-show-group">
+      <div class='user-show-text-wrap'>
+        <label class="user-show-text">お名前(全角)</label>
+      </div>
+      <p class="user-show-value"><%= @user.last_name %> <%= @user.first_name %></p>
+    </div>
+    <div class="user-show-group">
+      <div class='user-show-text-wrap'>
+        <label class="user-show-text">お名前カナ(全角)</label>
+      </div>
+      <p class="user-show-value"><%= @user.last_name_kana %> <%= @user.first_name_kana %></p>
+    </div>
+    <div class="user-show-group">
+      <div class='user-show-text-wrap'>
+        <label class="user-show-text">生年月日</label>
+      </div>
+      <p class="user-show-value"><%= @user.birthday.to_s[0, 4] %>年
+                                 <%= @user.birthday.to_s[5, 2] %>月
+                                 <%= @user.birthday.to_s[8, 2] %>日</p>
+    </div>
+    <div class='user-show-btn'>
+      <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class:"user-show-grey-btn"%>
+    </div>
+    <div class='user-show-btn'>
+      <%= link_to "商品一覧へ戻る", root_path, class:"user-show-red-btn"%>
     </div>
   </div>
 </div>
