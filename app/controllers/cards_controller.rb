@@ -2,6 +2,7 @@ class CardsController < ApplicationController
   before_action :authenticate_user!
   
   def new
+    binding.pry
     session[:previous_url] = request.referer
   end
   def create

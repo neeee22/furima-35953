@@ -4,7 +4,6 @@ class OrdersController < ApplicationController
   before_action :move_to_index
 
   def index
-    redirect_to new_card_path and return unless current_user.card.present?
     @order_address = OrderAddress.new
     show_card
   end
