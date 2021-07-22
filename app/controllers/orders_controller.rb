@@ -5,6 +5,7 @@ class OrdersController < ApplicationController
 
   def index
     @order_address = OrderAddress.new
+    show_card
   end
 
   def create
@@ -14,6 +15,7 @@ class OrdersController < ApplicationController
       @order_address.save
       redirect_to root_path
     else
+      show_card
       render :index
     end
   end
@@ -26,20 +28,31 @@ class OrdersController < ApplicationController
 
   def order_params
     params.require(:order_address).permit(:postal_code, :prefecture_id, :city, :house_number, :building_name, :phone_number).merge(
-      token: params[:token], user_id: current_user.id, item_id: @item.id
+      user_id: current_user.id, item_id: @item.id
     )
   end
 
   def pay_item
     Payjp.api_key = ENV['PAYJP_SECRET_KEY']
+    customer_token = current_user.card.customer_token
     Payjp::Charge.create(
       amount: @item.price,
-      card: order_params[:token],
+      customer: customer_token,
       currency: 'jpy'
     )
   end
 
   def move_to_index
     redirect_to root_path if @item.user == current_user || @item.order.present?
+  end
+
+  def show_card
+    @user = current_user
+    Payjp.api_key = ENV["PAYJP_SECRET_KEY"] 
+    card = Card.find_by(user_id: current_user.id)
+    if card.present?
+      customer = Payjp::Customer.retrieve(card.customer_token) 
+      @card = customer.cards.first
+    end
   end
 end
