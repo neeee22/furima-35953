@@ -2,6 +2,7 @@ class CardsController < ApplicationController
   before_action :authenticate_user!
   
   def new
+    session[:previous_url] = request.referer
   end
   def create
     Payjp.api_key = ENV["PAYJP_SECRET_KEY"]
@@ -15,7 +16,7 @@ class CardsController < ApplicationController
       user_id: current_user.id
     )
     if card.save
-      redirect_to user_path(current_user)
+      redirect_to session[:previous_url] 
     else
       render :new
     end
