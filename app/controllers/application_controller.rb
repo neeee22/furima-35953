@@ -18,6 +18,6 @@ class ApplicationController < ActionController::Base
                                                          first_name_kana
                                                          birthday])
 
-     devise_parameter_sanitizer.permit(:account_update, keys:[:nickname])
+    devise_parameter_sanitizer.permit(:account_update, keys: [:nickname])
   end
 end
