@@ -83,7 +83,7 @@
 
 | Column | Type       | Option           |
 | -------| ---------- | -----------------|
-| name   | string     | uniqueness: true |
+| brand  | string     | uniqueness: true |
 
 ### Association
 
