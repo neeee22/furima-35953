@@ -1,4 +1,4 @@
-class ItemBrand
+class ItemsBrand
   include ActiveModel::Model
   attr_accessor :name, :detail, :images, :category_id, :status_id, :fee_id, :prefecture_id, :schedule_id, :price, :user_id,:brand_name
 
@@ -22,8 +22,9 @@ class ItemBrand
   end
 
   def save
-    item = Item.create(name: name, detail: detail, price: price, images: images, category_id: category_id, status_id: status_id, fee_id: fee_id, prefecture_id: prefecture_id, schedule_id: schedule_id)
-    brand = Brand.create(brand_name: brand_name)
+    item = Item.create(name: name, detail: detail, price: price, images: images, category_id: category_id, status_id: status_id, fee_id: fee_id, prefecture_id: prefecture_id, schedule_id: schedule_id, user_id: user_id)
+    brand = Brand.where(brand_name: brand_name).first_or_initialize
+    brand.save
 
     ItemBrandRelation.create(item_id: item.id, brand_id: brand.id)
   end

@@ -20,7 +20,7 @@ class Item < ApplicationRecord
   has_one :order
   has_many_attached :images
   has_many :item_brand_relations
-  has_many :brand, through: :item_brand_relations
+  has_many :brands, through: :item_brand_relations
 
   extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to :category

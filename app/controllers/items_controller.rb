@@ -8,11 +8,11 @@ class ItemsController < ApplicationController
   end
 
   def new
-    @item = ItemBrand.new
+    @item = ItemsBrand.new
   end
 
   def create
-    @item = ItemBrand.new(item_params)
+    @item = ItemsBrand.new(item_params)
     binding.pry
     if @item.valid?
       @item.save
@@ -46,7 +46,7 @@ class ItemsController < ApplicationController
   private
 
   def item_params
-    params.require(:item_brand).permit(:name, :price, :detail, :category_id, :status_id, :fee_id, :prefecture_id, :schedule_id, :brand_name, images: []).merge(user_id: current_user.id)
+    params.require(:items_brand).permit(:name, :price, :detail, :category_id, :status_id, :fee_id, :prefecture_id, :schedule_id, :brand_name, images: []).merge(user_id: current_user.id)
   end
 
   def set_item
