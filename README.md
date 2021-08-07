@@ -17,6 +17,7 @@
 
 - has_many :items
 - has_many :orders
+- has_one :cards
 
 ## items テーブル
 
@@ -36,6 +37,7 @@
 
 - belongs_to :user
 - has_one :order
+- has_many :brands
 
 ### orders テーブル
 
@@ -66,3 +68,35 @@
 
 - belongs_to :order
 
+## cards テーブル
+
+| Column         | Type       | Option                         |
+| -------------- | ---------- | ------------------------------ |
+| customer_token | string     | null: false                    |
+| user           | references | null: false, foreign_key: true |
+
+### Association
+
+- belongs_to :user
+
+## brands テーブル
+
+| Column | Type       | Option           |
+| -------| ---------- | -----------------|
+| brand  | string     | uniqueness: true |
+
+### Association
+
+- has_many :items
+
+## item_brand_relations テーブル
+
+| Column | Type       | Option            |
+| -------| ---------- | ----------------- |
+| item   | references | foreign_key: true |
+| brand  | references | foreign_key: true |
+
+### Association
+
+- belongs_to :item
+- belongs_to :brand

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20_210_720_143_331) do
+ActiveRecord::Schema.define(version: 20_210_803_205_936) do
   create_table 'active_storage_attachments', options: 'ENGINE=InnoDB DEFAULT CHARSET=utf8', force: :cascade do |t|
     t.string 'name', null: false
     t.string 'record_type', null: false
@@ -46,12 +46,27 @@ ActiveRecord::Schema.define(version: 20_210_720_143_331) do
     t.index ['order_id'], name: 'index_addresses_on_order_id'
   end
 
+  create_table 'brands', options: 'ENGINE=InnoDB DEFAULT CHARSET=utf8', force: :cascade do |t|
+    t.string 'brand_name', null: false
+    t.datetime 'created_at', precision: 6, null: false
+    t.datetime 'updated_at', precision: 6, null: false
+  end
+
   create_table 'cards', options: 'ENGINE=InnoDB DEFAULT CHARSET=utf8', force: :cascade do |t|
     t.string 'customer_token', null: false
     t.bigint 'user_id'
     t.datetime 'created_at', precision: 6, null: false
     t.datetime 'updated_at', precision: 6, null: false
     t.index ['user_id'], name: 'index_cards_on_user_id'
+  end
+
+  create_table 'item_brand_relations', options: 'ENGINE=InnoDB DEFAULT CHARSET=utf8', force: :cascade do |t|
+    t.bigint 'item_id'
+    t.bigint 'brand_id'
+    t.datetime 'created_at', precision: 6, null: false
+    t.datetime 'updated_at', precision: 6, null: false
+    t.index ['brand_id'], name: 'index_item_brand_relations_on_brand_id'
+    t.index ['item_id'], name: 'index_item_brand_relations_on_item_id'
   end
 
   create_table 'items', options: 'ENGINE=InnoDB DEFAULT CHARSET=utf8', force: :cascade do |t|
@@ -99,6 +114,8 @@ ActiveRecord::Schema.define(version: 20_210_720_143_331) do
   add_foreign_key 'active_storage_attachments', 'active_storage_blobs', column: 'blob_id'
   add_foreign_key 'addresses', 'orders'
   add_foreign_key 'cards', 'users'
+  add_foreign_key 'item_brand_relations', 'brands'
+  add_foreign_key 'item_brand_relations', 'items'
   add_foreign_key 'items', 'users'
   add_foreign_key 'orders', 'items'
   add_foreign_key 'orders', 'users'
