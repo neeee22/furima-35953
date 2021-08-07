@@ -1,20 +1,20 @@
 class Item < ApplicationRecord
-  #with_options presence: true do
+  # with_options presence: true do
   #  validates :name
   #  validates :detail
   #  validates :images
-  #end
+  # end
 
-  #validates :price, presence: true,
+  # validates :price, presence: true,
   #                  numericality: { only_integer: true, greater_than_or_equal_to: 300, less_than_or_equal_to: 9_999_999 }
 
-  #with_options numericality: { other_than: 0, message: 'を選択してください' } do
+  # with_options numericality: { other_than: 0, message: 'を選択してください' } do
   #  validates :category_id
   #  validates :status_id
   #  validates :fee_id
   #  validates :prefecture_id
   #  validates :schedule_id
-  #end
+  # end
 
   belongs_to :user
   has_one :order
