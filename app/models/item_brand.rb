@@ -1,13 +1,14 @@
-class ItemsBrand
+class ItemBrand
   include ActiveModel::Model
-  attr_accessor :name, :detail, :images, :category_id, :status_id, :fee_id,:prefecture_id,:schedule_id,:brand
+  attr_accessor :name, :detail, :images, :category_id, :status_id, :fee_id, :prefecture_id, :schedule_id, :price, :user_id,:brand_name
 
   with_options presence: true do
     validates :name
     validates :detail
     validates :images
-    validates :brand
   end
+
+  validates :brand_name, presence: true
 
   validates :price, presence: true,
                     numericality: { only_integer: true, greater_than_or_equal_to: 300, less_than_or_equal_to: 9_999_999 }
@@ -21,8 +22,8 @@ class ItemsBrand
   end
 
   def save
-    item = Item.create(name: name, detail: detail, images: images, category: category_id, status_id: status_id, fee_id: fee_id, prefecture_id: prefecture_id, schedule_id: schedule_id)
-    brand = Brand.create(brand: brand)
+    item = Item.create(name: name, detail: detail, price: price, images: images, category_id: category_id, status_id: status_id, fee_id: fee_id, prefecture_id: prefecture_id, schedule_id: schedule_id)
+    brand = Brand.create(brand_name: brand_name)
 
     ItemBrandRelation.create(item_id: item.id, brand_id: brand.id)
   end

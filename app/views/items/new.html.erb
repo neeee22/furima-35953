@@ -17,7 +17,7 @@
         <p>
           クリックしてファイルをアップロード
         </p>
-        <%= f.file_field :images, name: "item[images][]", id:"item-image" %>
+        <%= f.file_field :images, name: "item_brand[images][]", id:"item-image" %>
       </div>
     </div>
     <div id="image-list"></div>
@@ -28,6 +28,10 @@
         <span class="indispensable">必須</span>
       </div>
       <%= f.text_area :name, class:"items-text", id:"item-name", placeholder:"商品名（必須 40文字まで)", maxlength:"40" %>
+      <div class="weight-bold-text">
+        ブランド名
+      </div>
+      <%= f.text_area :brand_name, class:"items-text", id:"item-name", placeholder:"ブランド名", maxlength:"40" %>
       <div class="items-explain">
         <div class="weight-bold-text">
           商品の説明

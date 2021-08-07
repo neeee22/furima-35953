@@ -47,7 +47,7 @@ ActiveRecord::Schema.define(version: 2021_08_03_205936) do
   end
 
   create_table "brands", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "brand", null: false
+    t.string "brand_name", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
